@@ -1,19 +1,16 @@
 # TO-DO: Complete the selection_sort() function below
 def selection_sort(arr):
     # loop through n-1 elements
-    for i in range(0, len(arr) - 1):
-        cur_index = i
+    for cur_index in range(0, len(arr) - 1):
         smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc)
-        # Your code here
-        if arr[cur_index] < arr[smallest_index]:
-            placeholder = arr[smallest_index]
-            arr[smallest_index] = arr[cur_index]
-            arr[cur_index] = placeholder
-        # TO-DO: swap
-
-
+        # Iterate through to find the smallest value
+        # Place it at the left-most boundary, swapping that element
+        # Move the "boundary" from the left to right via nested loop
+        for sub_index in range(cur_index, len(arr)):
+            if arr[sub_index] < arr[smallest_index]:
+                smallest_index = sub_index
+        # Python swap code found online:
+        arr[smallest_index], arr[cur_index] = arr[cur_index], arr[smallest_index]
     return arr
 
 
