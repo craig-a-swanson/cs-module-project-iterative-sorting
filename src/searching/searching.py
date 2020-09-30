@@ -16,24 +16,32 @@ def binary_search(arr, target):
     # If less than, find the new midpoint between the current location and the start
     # Keep going until we find the target, reach the end/start, no new elements to check.
 
+    result = -1
+
     if len(arr) == 0:
-        return -1
+        return result
+
+    # Maximum iterations for a binary search; used for the loop
     max_iterations = math.log2(len(arr))
+
+    # Set midepoint and the right & left boundaries of the array to use in the search
     midpoint = 0
     right_bound = len(arr) - 1
     left_bound = 0
-    result = -1
-    for iteration in range(1, math.floor(max_iterations) + 1): # find formula for maximum iterations in binary search
+
+    # Iterate for the maximum number of iterations needed,
+    # updating the midpoint and appropriate boundary each iterations.
+    # If a match is found, set result to the index, otherwise finish the loop.
+    for iteration in range(1, math.floor(max_iterations) + 1):
         midpoint = (right_bound - left_bound) // 2
         if arr[midpoint] == target:
             result = midpoint
             break
+
         elif arr[midpoint] > target:
             right_bound = midpoint
             
         elif arr[midpoint] < target:
             left_bound = midpoint
-            
-        
 
-    return result  # not found
+    return result
